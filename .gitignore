@@ -37,3 +37,19 @@ nohup.out
 
 # Project internals
 agent.md
+
+# Research scratch / web scraping cache
+.firecrawl/
+
+# Ruff linter cache
+.ruff_cache/
+
+# Large numpy demos
+*.npy
+
+# Bulk experiment artifacts (keep only evaluations.npz)
+episode_diagnostics.csv
+**/final_model.zip
+**/best_model.zip
+**/best_model/
+**/tb/
