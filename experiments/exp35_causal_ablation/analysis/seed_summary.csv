@@ -1,0 +1,65 @@
+task,method,method_name,seed,final_reward,peak_reward,solved,first_success_step,buf_success_500k,buf_success_1M,q_final,q_peak,q_collapsed
+peg-insert-side-v3,A,SAC baseline,0,507.2,543.0,True,605500.0,0.017,0.339,8.2848,34.7618,True
+peg-insert-side-v3,A,SAC baseline,1,4368.0,4638.0,True,301500.0,0.169,0.523,,,False
+peg-insert-side-v3,A,SAC baseline,2,2910.5,4633.7,True,130500.0,0.072,0.282,,,False
+peg-insert-side-v3,A,SAC baseline,3,63.3,104.6,False,,0.0,0.004,,,False
+peg-insert-side-v3,A,SAC baseline,4,4225.5,4470.8,True,252500.0,0.329,0.653,,,False
+peg-insert-side-v3,A,SAC baseline,5,3593.5,4551.7,True,578500.0,0.0,0.324,8.8658,34.9289,True
+peg-insert-side-v3,A,SAC baseline,6,4463.4,4587.2,True,189500.0,0.021,0.361,,,False
+peg-insert-side-v3,A,SAC baseline,7,752.7,797.1,True,150500.0,0.452,0.668,20.7074,50.051,True
+peg-insert-side-v3,B,SAC + anneal,0,4058.3,4577.2,True,433000.0,0.033,0.374,,,False
+peg-insert-side-v3,B,SAC + anneal,1,4482.5,4686.3,True,194500.0,0.282,0.561,112.0934,205.6604,False
+peg-insert-side-v3,B,SAC + anneal,2,4205.8,4601.1,True,256500.0,0.144,0.417,,,False
+peg-insert-side-v3,B,SAC + anneal,3,8.8,459.2,False,562500.0,0.0,0.002,,,False
+peg-insert-side-v3,B,SAC + anneal,4,21.6,21.9,False,,0.0,0.0,,,False
+peg-insert-side-v3,B,SAC + anneal,5,908.1,1208.6,True,262500.0,0.178,0.458,4.1511,48.3607,True
+peg-insert-side-v3,B,SAC + anneal,6,4088.5,4622.1,True,242000.0,0.186,0.525,157.0336,307.9718,False
+peg-insert-side-v3,B,SAC + anneal,7,642.6,758.3,True,304000.0,0.017,0.244,1.6812,8.8668,True
+peg-insert-side-v3,C,demo_smooth,0,828.8,922.0,True,605500.0,0.017,0.363,110.8315,121.4275,False
+peg-insert-side-v3,C,demo_smooth,1,786.6,796.3,True,340000.0,0.266,0.569,,,False
+peg-insert-side-v3,C,demo_smooth,2,1156.7,1990.3,True,632000.0,0.035,0.295,,,False
+peg-insert-side-v3,C,demo_smooth,3,63.3,104.6,False,,0.0,0.004,,,False
+peg-insert-side-v3,C,demo_smooth,4,4452.2,4504.2,True,303500.0,0.149,0.516,,,False
+peg-insert-side-v3,C,demo_smooth,5,2228.6,2504.7,True,578500.0,0.0,0.358,,,False
+peg-insert-side-v3,C,demo_smooth,6,1461.7,2159.5,True,189500.0,0.016,0.229,,,False
+peg-insert-side-v3,C,demo_smooth,7,2407.0,3118.2,True,237500.0,0.406,0.648,,,False
+peg-insert-side-v3,D,demo_smooth + anneal,0,1759.4,2117.8,True,433000.0,0.03,0.419,178.3002,233.6606,False
+peg-insert-side-v3,D,demo_smooth + anneal,1,2953.8,4864.9,True,125500.0,0.01,0.15,,,False
+peg-insert-side-v3,D,demo_smooth + anneal,2,4289.7,4847.7,True,309500.0,0.037,0.402,,,False
+peg-insert-side-v3,D,demo_smooth + anneal,3,6.8,459.2,False,562500.0,0.0,0.001,11025423.0,15520360.0,False
+peg-insert-side-v3,D,demo_smooth + anneal,4,21.6,21.9,False,,0.0,0.0,,,False
+peg-insert-side-v3,D,demo_smooth + anneal,5,2160.2,2562.8,True,262500.0,0.082,0.317,8.8371,207.2585,True
+peg-insert-side-v3,D,demo_smooth + anneal,6,623.1,767.0,True,533500.0,0.003,0.234,,,False
+peg-insert-side-v3,D,demo_smooth + anneal,7,695.3,2456.9,True,304000.0,0.04,0.176,,,False
+pick-place-v3,A,SAC baseline,0,3148.5,4404.7,True,202500.0,0.079,0.474,,,False
+pick-place-v3,A,SAC baseline,1,5.6,16.6,False,,0.0,0.0,,,False
+pick-place-v3,A,SAC baseline,2,2772.7,4521.0,True,355000.0,0.032,0.356,,,False
+pick-place-v3,A,SAC baseline,3,55.8,62.0,False,,0.0,0.0,,,False
+pick-place-v3,A,SAC baseline,4,3365.8,4391.9,True,62000.0,0.237,0.466,,,False
+pick-place-v3,A,SAC baseline,5,5.6,11.0,False,,0.0,0.0,17.9727,70.7236,True
+pick-place-v3,A,SAC baseline,6,49.1,52.7,False,,0.0,0.0,,,False
+pick-place-v3,A,SAC baseline,7,2431.8,4454.8,True,116000.0,0.277,0.542,,,False
+pick-place-v3,B,SAC + anneal,0,9.7,37.2,False,674000.0,0.0,0.003,,,False
+pick-place-v3,B,SAC + anneal,1,32.7,54.8,False,938000.0,0.0,0.001,,,False
+pick-place-v3,B,SAC + anneal,2,21.0,52.9,False,900000.0,0.0,0.001,,,False
+pick-place-v3,B,SAC + anneal,3,5.3,31.6,False,720000.0,0.0,0.002,262.1128,17224.8281,True
+pick-place-v3,B,SAC + anneal,4,47.3,55.0,False,,0.0,0.0,,,False
+pick-place-v3,B,SAC + anneal,5,49.9,56.6,False,,0.0,0.0,,,False
+pick-place-v3,B,SAC + anneal,6,44.2,50.7,False,,0.0,0.0,,,False
+pick-place-v3,B,SAC + anneal,7,37.6,48.5,False,,0.0,0.0,,,False
+pick-place-v3,C,demo_smooth,0,3966.1,4618.2,True,202500.0,0.025,0.295,,,False
+pick-place-v3,C,demo_smooth,1,5.6,16.6,False,,0.0,0.0,,,False
+pick-place-v3,C,demo_smooth,2,2679.9,3388.9,True,355000.0,0.038,0.319,221.9151,230.7929,False
+pick-place-v3,C,demo_smooth,3,55.8,62.0,False,,0.0,0.0,,,False
+pick-place-v3,C,demo_smooth,4,7.3,18.6,False,,,,,,False
+pick-place-v3,C,demo_smooth,5,5.6,11.0,False,,0.0,0.0,17.9727,70.7236,True
+pick-place-v3,C,demo_smooth,6,49.1,52.7,False,,0.0,0.0,,,False
+pick-place-v3,C,demo_smooth,7,40.5,40.5,False,,,,,,False
+pick-place-v3,D,demo_smooth + anneal,0,1038.6,3333.6,True,674000.0,0.0,0.081,,,False
+pick-place-v3,D,demo_smooth + anneal,1,32.3,54.8,False,938000.0,0.0,0.001,,,False
+pick-place-v3,D,demo_smooth + anneal,2,27.3,52.9,False,900000.0,0.0,0.0,,,False
+pick-place-v3,D,demo_smooth + anneal,3,7.3,42.4,False,260000.0,0.003,0.002,62.6779,9728.8154,True
+pick-place-v3,D,demo_smooth + anneal,4,47.3,55.0,False,,0.0,0.0,,,False
+pick-place-v3,D,demo_smooth + anneal,5,49.9,56.6,False,,0.0,0.0,,,False
+pick-place-v3,D,demo_smooth + anneal,6,44.2,50.7,False,,0.0,0.0,,,False
+pick-place-v3,D,demo_smooth + anneal,7,37.6,48.5,False,,0.0,0.0,,,False

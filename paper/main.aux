@@ -1,0 +1,136 @@
+\relax 
+\bibstyle{corlabbrvnat}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{haarnoja2018a}
+\citation{haarnoja2018b}
+\citation{zhou2021}
+\citation{wang2020,zhou2025}
+\citation{yu2020}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:introduction}{{1}{1}{Introduction}{section.1}{}}
+\def\@LN@column{1}
+\citation{ziebart2010}
+\citation{haarnoja2018a}
+\citation{haarnoja2018b}
+\citation{eysenbach2022}
+\citation{zhou2021}
+\citation{wang2020}
+\citation{zhou2025}
+\citation{nikishin2022}
+\citation{lyle2023}
+\citation{fujimoto2018}
+\citation{yu2020}
+\citation{mclean2025}
+\citation{agarwal2021}
+\citation{haarnoja2018b}
+\citation{raffin2021}
+\def\@LN@column{2}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{Related Work}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Entropy Regularization in RL}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Entropy Scheduling and Meta-Learning}{2}{subsection.2.2}\protected@file@percent }
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Failure Modes in Deep RL}{2}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Benchmarks and Evaluation}{2}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Background}{2}{section.3}\protected@file@percent }
+\newlabel{sec:background}{{3}{2}{Background}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Soft Actor-Critic with Auto-Entropy Tuning}{2}{subsection.3.1}\protected@file@percent }
+\citation{yu2020}
+\citation{raffin2021}
+\def\@LN@column{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Meta-World v3}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experimental Setup}{3}{section.4}\protected@file@percent }
+\newlabel{sec:setup}{{4}{3}{Experimental Setup}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Observational Study: $\alpha $ Trajectories (Exp.~36)}{3}{subsection.4.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Meta-World v3 tasks used in this study.}}{3}{table.1}\protected@file@percent }
+\newlabel{tab:tasks}{{1}{3}{Meta-World v3 tasks used in this study}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Causal Ablation: Fixed vs.\ Auto Entropy (Exp.~35)}{3}{subsection.4.2}\protected@file@percent }
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Shared Configuration}{3}{subsection.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Hyperparameters shared across all experiments.}}{3}{table.2}\protected@file@percent }
+\newlabel{tab:hyperparams}{{2}{3}{Hyperparameters shared across all experiments}{table.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Results}{3}{section.5}\protected@file@percent }
+\newlabel{sec:results}{{5}{3}{Results}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}The $\alpha $ Bifurcation}{3}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:bifurcation}{{5.1}{3}{The $\alpha $ Bifurcation}{subsection.5.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Three Failure Modes}{3}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:failure_modes}{{5.2}{3}{Three Failure Modes}{subsection.5.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces $\alpha $ trajectories (top) and corresponding reward curves (bottom) for peg-insert-side-v3 (left, 12 seeds) and pick-place-v3 (right, 12 seeds). Warm lines indicate ever-solved seeds (including 3 DTF seeds on pick-place); dark blue dashed lines indicate $\alpha $-collapse; purple dashed lines indicate $\alpha $-explosion. On both tasks, ever-solved seeds maintain $\alpha $ in the shaded stable zone [0.01, 0.30], while never-solved seeds diverge to extreme values. The $\alpha $ bifurcation is visible by $\sim $200k steps, substantially earlier than reward differences emerge.}}{4}{figure.1}\protected@file@percent }
+\newlabel{fig:bifurcation}{{1}{4}{$\alpha $ trajectories (top) and corresponding reward curves (bottom) for peg-insert-side-v3 (left, 12 seeds) and pick-place-v3 (right, 12 seeds). Warm lines indicate ever-solved seeds (including 3 DTF seeds on pick-place); dark blue dashed lines indicate $\alpha $-collapse; purple dashed lines indicate $\alpha $-explosion. On both tasks, ever-solved seeds maintain $\alpha $ in the shaded stable zone [0.01, 0.30], while never-solved seeds diverge to extreme values. The $\alpha $ bifurcation is visible by $\sim $200k steps, substantially earlier than reward differences emerge}{figure.1}{}}
+\def\@LN@column{2}
+\def\@LN@column{1}
+\citation{fujimoto2018}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Per-task summary across all experimental runs. $\alpha $ statistics are computed from exp.~36 (observational study). Reward statistics are mean $\pm $ std across seeds at final checkpoint. $\dagger $~denotes 12-seed runs. Solve rate counts seeds that ever achieve episode reward $\geq 500$ during training; three pick-place seeds (4, 10, 11) discover then forget the solution (DTF).}}{5}{table.3}\protected@file@percent }
+\newlabel{tab:summary}{{3}{5}{Per-task summary across all experimental runs. $\alpha $ statistics are computed from exp.~36 (observational study). Reward statistics are mean $\pm $ std across seeds at final checkpoint. $\dagger $~denotes 12-seed runs. Solve rate counts seeds that ever achieve episode reward $\geq 500$ during training; three pick-place seeds (4, 10, 11) discover then forget the solution (DTF)}{table.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Three failure modes identified from $\alpha $ trajectories (pick-place-v3). (a)~$\alpha $-collapse: entropy coefficient decays to near-zero before task discovery, trapping the policy in a local minimum. (b)~$\alpha $-explosion: entropy term grows to dominate the objective, preventing policy commitment. (c)~Discover-then-forget: $\alpha $ remains in the healthy range but the policy catastrophically loses a learned solution (reward spike at step 891k). Modes (a) and (b) are detectable from $\alpha $ alone; mode (c) requires joint monitoring.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:failure_modes}{{2}{5}{Three failure modes identified from $\alpha $ trajectories (pick-place-v3). (a)~$\alpha $-collapse: entropy coefficient decays to near-zero before task discovery, trapping the policy in a local minimum. (b)~$\alpha $-explosion: entropy term grows to dominate the objective, preventing policy commitment. (c)~Discover-then-forget: $\alpha $ remains in the healthy range but the policy catastrophically loses a learned solution (reward spike at step 891k). Modes (a) and (b) are detectable from $\alpha $ alone; mode (c) requires joint monitoring}{figure.2}{}}
+\def\@LN@column{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Fixed Annealing Destroys the Adaptive Mechanism}{5}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:ablation}{{5.3}{5}{Fixed Annealing Destroys the Adaptive Mechanism}{subsection.5.3}{}}
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Mechanistic Evidence}{5}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:mechanistic}{{5.4}{5}{Mechanistic Evidence}{subsection.5.4}{}}
+\citation{fujimoto2018}
+\citation{fujimoto2018}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Learning curves for the 2$\times $2 ablation (8 seeds per condition, mean $\pm $ 1 std shaded). Dashed horizontal line at reward $= 500$ marks the success threshold. Left: peg-insert-side-v3. Right: pick-place-v3. On pick-place, Method B (fixed annealing) achieves mean final reward of 33 versus 1525 for Method A (auto-entropy). The demo reward (C, D) does not rescue annealing failure.}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:ablation}{{3}{6}{Learning curves for the 2$\times $2 ablation (8 seeds per condition, mean $\pm $ 1 std shaded). Dashed horizontal line at reward $= 500$ marks the success threshold. Left: peg-insert-side-v3. Right: pick-place-v3. On pick-place, Method B (fixed annealing) achieves mean final reward of 33 versus 1525 for Method A (auto-entropy). The demo reward (C, D) does not rescue annealing failure}{figure.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Ablation results (exp.~35, 8 seeds per condition). Reward is mean $\pm $ std of final episode reward across seeds. Solve rate counts seeds that achieve episode reward $\geq 500$ at final checkpoint.}}{6}{table.4}\protected@file@percent }
+\newlabel{tab:ablation}{{4}{6}{Ablation results (exp.~35, 8 seeds per condition). Reward is mean $\pm $ std of final episode reward across seeds. Solve rate counts seeds that achieve episode reward $\geq 500$ at final checkpoint}{table.4}{}}
+\def\@LN@column{2}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}$\alpha $ as a Training Diagnostic}{6}{subsection.5.5}\protected@file@percent }
+\newlabel{sec:diagnostic}{{5.5}{6}{$\alpha $ as a Training Diagnostic}{subsection.5.5}{}}
+\def\@LN@column{1}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Mechanistic evidence from the ablation. Left: replay buffer success fraction on peg-insert-side-v3. Auto-entropy (A) accumulates successful experience faster than annealed conditions (B, D). Right: Q-values at probe states on pick-place-v3. Annealed conditions show Q-value divergence---values spike to 12,000--17,000 then collapse---consistent with overestimation under low-entropy policies~\citep {fujimoto2018}. Values clipped at 1,000 for readability; see Appendix~\ref {app:qvalues} for unclipped traces.}}{7}{figure.4}\protected@file@percent }
+\newlabel{fig:mechanistic}{{4}{7}{Mechanistic evidence from the ablation. Left: replay buffer success fraction on peg-insert-side-v3. Auto-entropy (A) accumulates successful experience faster than annealed conditions (B, D). Right: Q-values at probe states on pick-place-v3. Annealed conditions show Q-value divergence---values spike to 12,000--17,000 then collapse---consistent with overestimation under low-entropy policies~\protect \citep {fujimoto2018}. Values clipped at 1,000 for readability; see Appendix~\ref {app:qvalues} for unclipped traces}{figure.4}{}}
+\def\@LN@column{2}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{7}{section.6}\protected@file@percent }
+\newlabel{sec:discussion}{{6}{7}{Discussion}{section.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Why does $\alpha $ bifurcate?}{7}{section*.1}\protected@file@percent }
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {paragraph}{When might fixed schedules help?}{7}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Limitations}{7}{section.7}\protected@file@percent }
+\newlabel{sec:limitations}{{7}{7}{Limitations}{section.7}{}}
+\citation{raffin2021}
+\def\@LN@column{2}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{8}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{8}{8}{Conclusion}{section.8}{}}
+\def\@LN@column{1}
+\bibdata{references}
+\bibcite{haarnoja2018a}{{1}{2018{}}{{Haarnoja et~al.}}{{Haarnoja, Zhou, Abbeel, and Levine}}}
+\bibcite{haarnoja2018b}{{2}{2018{}}{{Haarnoja et~al.}}{{Haarnoja, Zhou, Hartikainen, Tucker, Ha, Tan, Kumar, Zhu, Gupta, Abbeel, and Levine}}}
+\bibcite{zhou2021}{{3}{2021}{{Zhou and Heywood}}{{}}}
+\bibcite{wang2020}{{4}{2020}{{Wang and Ni}}{{}}}
+\bibcite{zhou2025}{{5}{2025}{{Zhou and Heywood}}{{}}}
+\bibcite{yu2020}{{6}{2020}{{Yu et~al.}}{{Yu, Quillen, He, Julian, Hausman, Finn, and Levine}}}
+\bibcite{ziebart2010}{{7}{2010}{{Ziebart}}{{}}}
+\bibcite{eysenbach2022}{{8}{2022}{{Eysenbach and Levine}}{{}}}
+\bibcite{nikishin2022}{{9}{2022}{{Nikishin et~al.}}{{Nikishin, Schwarzer, D'Oro, Bacon, and Courville}}}
+\bibcite{lyle2023}{{10}{2023}{{Lyle et~al.}}{{Lyle, Rowland, and Dabney}}}
+\bibcite{fujimoto2018}{{11}{2018}{{Fujimoto et~al.}}{{Fujimoto, van Hoof, and Meger}}}
+\bibcite{mclean2025}{{12}{2025}{{McLean et~al.}}{{McLean, Chatzaroulas, et~al.}}}
+\bibcite{agarwal2021}{{13}{2021}{{Agarwal et~al.}}{{Agarwal, Schwarzer, Castro, Courville, and Bellemare}}}
+\bibcite{raffin2021}{{14}{2021}{{Raffin et~al.}}{{Raffin, Hill, Gleave, Kanervisto, Ernestus, and Dormann}}}
+\bibcite{gu2023maniskill2}{{15}{2023}{{Gu et~al.}}{{Gu, Xiang, Li, Ling, Liu, Mu, Tang, Tao, Wei, Yao, Yuan, Xin, Huang, Su, and Zhu}}}
+\citation{fujimoto2018}
+\def\@LN@column{2}
+\def\@LN@column{1}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Per-Seed Results}{9}{appendix.A}\protected@file@percent }
+\newlabel{app:per_seed}{{A}{9}{Per-Seed Results}{appendix.A}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}Easy Task $\alpha $ Trajectories}{9}{appendix.B}\protected@file@percent }
+\newlabel{app:easy_tasks}{{B}{9}{Easy Task $\alpha $ Trajectories}{appendix.B}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {C}Q-Value Probe Details}{9}{appendix.C}\protected@file@percent }
+\newlabel{app:qvalues}{{C}{9}{Q-Value Probe Details}{appendix.C}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {D}Statistical Tests}{9}{appendix.D}\protected@file@percent }
+\newlabel{app:stats}{{D}{9}{Statistical Tests}{appendix.D}{}}
+\citation{gu2023maniskill2}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Per-seed results for peg-insert-side-v3 (exp.~36, 12 seeds). Outcome: S = solved, F = failed. Failure mode: C = collapse, E = explosion.}}{10}{table.5}\protected@file@percent }
+\newlabel{tab:peg_seeds}{{5}{10}{Per-seed results for peg-insert-side-v3 (exp.~36, 12 seeds). Outcome: S = solved, F = failed. Failure mode: C = collapse, E = explosion}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Per-seed results for pick-place-v3 (exp.~36, 12 seeds). DTF = discover-then-forget (solved during training, reverted by end).}}{10}{table.6}\protected@file@percent }
+\newlabel{tab:pick_seeds}{{6}{10}{Per-seed results for pick-place-v3 (exp.~36, 12 seeds). DTF = discover-then-forget (solved during training, reverted by end)}{table.6}{}}
+\def\@LN@column{2}
+\@writefile{toc}{\contentsline {section}{\numberline {E}ManiSkill3 Negative Result}{10}{appendix.E}\protected@file@percent }
+\newlabel{app:maniskill}{{E}{10}{ManiSkill3 Negative Result}{appendix.E}{}}
+\def\@LN@column{1}
+\gdef \@abspage@last{10}

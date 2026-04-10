@@ -1,0 +1,103 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Haarnoja et~al.(2018{\natexlab{a}})Haarnoja, Zhou, Abbeel, and
+  Levine]{haarnoja2018a}
+T.~Haarnoja, A.~Zhou, P.~Abbeel, and S.~Levine.
+\newblock Soft actor-critic: Off-policy maximum entropy deep reinforcement
+  learning with a stochastic actor.
+\newblock In \emph{International Conference on Machine Learning (ICML)},
+  2018{\natexlab{a}}.
+
+\bibitem[Haarnoja et~al.(2018{\natexlab{b}})Haarnoja, Zhou, Hartikainen,
+  Tucker, Ha, Tan, Kumar, Zhu, Gupta, Abbeel, and Levine]{haarnoja2018b}
+T.~Haarnoja, A.~Zhou, K.~Hartikainen, G.~Tucker, S.~Ha, J.~Tan, V.~Kumar,
+  H.~Zhu, A.~Gupta, P.~Abbeel, and S.~Levine.
+\newblock Soft actor-critic algorithms and applications.
+\newblock \emph{arXiv preprint arXiv:1812.05905}, 2018{\natexlab{b}}.
+
+\bibitem[Zhou and Heywood(2021)]{zhou2021}
+Z.~Zhou and M.~I. Heywood.
+\newblock Target entropy annealing for discrete soft actor-critic.
+\newblock \emph{arXiv preprint arXiv:2112.02852}, 2021.
+
+\bibitem[Wang and Ni(2020)]{wang2020}
+Y.~Wang and T.~Ni.
+\newblock Meta-{SAC}: Auto-tune the entropy temperature of soft actor-critic
+  via metagradient.
+\newblock \emph{AutoML Workshop at ICML}, 2020.
+
+\bibitem[Zhou and Heywood(2025)]{zhou2025}
+Z.~Zhou and M.~I. Heywood.
+\newblock Learning to optimize entropy in the soft actor-critic.
+\newblock In \emph{International Conference on Artificial Neural Networks
+  (ICANN)}, 2025.
+
+\bibitem[Yu et~al.(2020)Yu, Quillen, He, Julian, Hausman, Finn, and
+  Levine]{yu2020}
+T.~Yu, D.~Quillen, Z.~He, R.~Julian, K.~Hausman, C.~Finn, and S.~Levine.
+\newblock Meta-world: A benchmark and evaluation for multi-task and meta
+  reinforcement learning.
+\newblock In \emph{Conference on Robot Learning (CoRL)}, 2020.
+
+\bibitem[Ziebart(2010)]{ziebart2010}
+B.~D. Ziebart.
+\newblock \emph{Modeling Purposeful Adaptive Behavior with the Principle of
+  Maximum Causal Entropy}.
+\newblock PhD thesis, Carnegie Mellon University, 2010.
+
+\bibitem[Eysenbach and Levine(2022)]{eysenbach2022}
+B.~Eysenbach and S.~Levine.
+\newblock Maximum entropy {RL} (provably) solves some robust {RL} problems.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2022.
+
+\bibitem[Nikishin et~al.(2022)Nikishin, Schwarzer, D'Oro, Bacon, and
+  Courville]{nikishin2022}
+E.~Nikishin, M.~Schwarzer, P.~D'Oro, P.-L. Bacon, and A.~Courville.
+\newblock The primacy bias in deep reinforcement learning.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2022.
+
+\bibitem[Lyle et~al.(2023)Lyle, Rowland, and Dabney]{lyle2023}
+C.~Lyle, M.~Rowland, and W.~Dabney.
+\newblock Understanding plasticity in neural networks.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2023.
+
+\bibitem[Fujimoto et~al.(2018)Fujimoto, van Hoof, and Meger]{fujimoto2018}
+S.~Fujimoto, H.~van Hoof, and D.~Meger.
+\newblock Addressing function approximation error in actor-critic methods.
+\newblock In \emph{International Conference on Machine Learning (ICML)}, 2018.
+
+\bibitem[McLean et~al.(2025)McLean, Chatzaroulas, et~al.]{mclean2025}
+R.~McLean, E.~Chatzaroulas, et~al.
+\newblock Meta-world+: An improved, standardized, {RL} benchmark.
+\newblock In \emph{NeurIPS Datasets and Benchmarks Track}, 2025.
+
+\bibitem[Agarwal et~al.(2021)Agarwal, Schwarzer, Castro, Courville, and
+  Bellemare]{agarwal2021}
+R.~Agarwal, M.~Schwarzer, P.~S. Castro, A.~Courville, and M.~G. Bellemare.
+\newblock Deep reinforcement learning at the edge of the statistical precipice.
+\newblock In \emph{Advances in Neural Information Processing Systems
+  (NeurIPS)}, 2021.
+
+\bibitem[Raffin et~al.(2021)Raffin, Hill, Gleave, Kanervisto, Ernestus, and
+  Dormann]{raffin2021}
+A.~Raffin, A.~Hill, A.~Gleave, A.~Kanervisto, M.~Ernestus, and N.~Dormann.
+\newblock Stable-baselines3: Reliable reinforcement learning implementations.
+\newblock \emph{Journal of Machine Learning Research (JMLR)}, 22\penalty0
+  (268):\penalty0 1--8, 2021.
+
+\bibitem[Gu et~al.(2023)Gu, Xiang, Li, Ling, Liu, Mu, Tang, Tao, Wei, Yao,
+  Yuan, Xin, Huang, Su, and Zhu]{gu2023maniskill2}
+J.~Gu, F.~Xiang, X.~Li, Z.~Ling, X.~Liu, T.~Mu, Y.~Tang, S.~Tao, X.~Wei,
+  Y.~Yao, X.~Yuan, P.~Xin, S.~Huang, H.~Su, and Y.~Zhu.
+\newblock {ManiSkill2}: A unified benchmark for generalizable manipulation
+  skills.
+\newblock In \emph{International Conference on Learning Representations
+  (ICLR)}, 2023.
+
+\end{thebibliography}
