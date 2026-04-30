@@ -115,7 +115,7 @@ def enjoy(algo_name):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--algo",       default="sac", choices=["sac", "td3", "ddpg"])
-    parser.add_argument("--timesteps",  type=int, default=100_000)
+    parser.add_argument("--timesteps",  type=int, default=750_000)
     parser.add_argument("--render",     action="store_true",
                         help="Open GUI during training (much slower)")
     parser.add_argument("--enjoy",      action="store_true",
