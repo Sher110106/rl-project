@@ -9,7 +9,7 @@ A full reinforcement learning pipeline for robotic manipulation. A **Kuka IIWA a
 
 | Name | Role |
 |---|---|
-| **Sher Partap Singh** | Project lead, environment design, SAC training pipeline |
+| **Sher Partap Singh** | Environment design, SAC training pipeline, results analysis |
 | **Mannan Sharma** | Dependencies, usage documentation, baseline testing |
 | **Mudasir Rasheed** | Exp35 causal ablation study — training & analysis |
 | **Akshita Shukla** | Exp36 alpha trajectory experiment — implementation |
