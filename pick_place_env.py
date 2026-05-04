@@ -102,12 +102,16 @@ class PickPlaceEnv(gym.Env):
 
     # ------------------------------------------------------------------
     def step(self, action):
+        # Scale the normalized action from [-1, 1] to [-pi, pi]
+        pi = np.pi
+        scaled_action = -pi + (action + 1.0) * 0.5 * (pi - -pi)
+
         # Apply joint position targets
         for j in range(self._num_joints):
             p.setJointMotorControl2(
                 self._robot, j,
                 controlMode=p.POSITION_CONTROL,
-                targetPosition=float(action[j]),
+                targetPosition=float(scaled_action[j]),
                 force=200,
                 physicsClientId=self._client,
             )
