@@ -1,29 +1,67 @@
 # Reinforcement Learning for Robotic Pick-and-Place
 ### Suction Gripper Control with SAC + Alpha Bifurcation Analysis
 
-A full reinforcement learning pipeline for robotic manipulation. A **Kuka IIWA arm with a suction gripper** learns to pick up a cube and place it in a tray using **Soft Actor-Critic (SAC)** in **PyBullet**. The project also includes a mechanistic analysis of SAC's entropy coefficient (α) as a diagnostic tool for predicting learning success before training converges.
-
----
-
-## Contributors
-
-| Name | Role |
-|---|---|
-| **Sher Partap Singh** | Environment design, SAC training pipeline, results analysis |
-| **Mannan Sharma** | Dependencies, usage documentation, baseline testing |
-| **Mudasir Rasheed** | Exp35 causal ablation study — training & analysis |
-| **Akshita Shukla** | Exp36 alpha trajectory experiment — implementation |
-| **Aryan Chopra** | Exp36 alpha trajectory experiment — analysis & plots |
+A full reinforcement learning pipeline for robotic manipulation. A **Kuka IIWA arm with a suction gripper** learns to pick up a cube and place it in a tray using **Soft Actor-Critic (SAC)** in **PyBullet**. The project also includes a mechanistic analysis of SAC's entropy coefficient (`alpha`) as a diagnostic signal for predicting learning success before training converges.
 
 ---
 
 ## Quick Start
 
+This repo now has **two automated shell entrypoints**, both intended to be run inside a **Docker container based on a bare Ubuntu image**.
+
+### 1. Full training pipeline
+
 ```bash
 bash run.sh
 ```
 
-This will create a virtual environment, install all dependencies, verify the environment, and train the SAC agent for 3 seeds × 1,200,000 steps. See [run.sh](run.sh) for full details.
+What it does:
+- installs Ubuntu system dependencies
+- creates or reuses `venv/`
+- installs Python dependencies
+- runs a smoke test on the environment
+- trains the SAC agent for **3 seeds x 1,200,000 steps**
+
+Outputs from `run.sh` are written to:
+
+```text
+logs/sac_suction_seed0/
+logs/sac_suction_seed1/
+logs/sac_suction_seed2/
+```
+
+Each seed directory contains evaluation checkpoints, models, TensorBoard logs, and diagnostics.
+
+### 2. Showcase the already trained best model
+
+```bash
+bash test.sh
+```
+
+What it does:
+- installs Ubuntu system dependencies needed for evaluation
+- creates or reuses `venv/`
+- installs Python dependencies
+- automatically selects the **best saved SAC checkpoint** already included in this repo
+- runs the trained policy
+- if a GUI display is available, shows the rollout live in PyBullet
+- otherwise records a headless MP4
+
+`test.sh` uses the committed pretrained checkpoints under:
+
+```text
+results/suction_gripper/
+```
+
+and saves its generated outputs to:
+
+```text
+results/test_runs/
+```
+
+That output directory contains:
+- `successful_rollout.mp4` or `best_rollout.mp4`
+- `summary.json`
 
 ---
 
@@ -35,52 +73,50 @@ A **Kuka IIWA robot arm** in PyBullet must learn to:
 1. **Reach** a randomly placed cube on a table
 2. **Activate suction** when the end-effector is within 8 cm of the cube
 3. **Lift and carry** the cube to a tray
-4. **Place** the cube within 5 cm of the tray centre
+4. **Place** the cube within 5 cm of the tray center
 
 ### Key Design Decision: IK-Resolved End-Effector Control
 
-The core insight that made this task solvable was switching from direct joint control to **end-effector delta control resolved via Inverse Kinematics (IK)**:
+The main design choice that made this task learnable was switching from direct joint control to **end-effector delta control resolved via Inverse Kinematics (IK)**.
 
 | | Direct Joint Control | **EE-Delta + IK (This Work)** |
 |---|---|---|
 | **Action space** | 8D: `[j1..j7, suction]` | **4D: `[dx, dy, dz, suction]`** |
 | **What the agent learns** | IK mapping + manipulation simultaneously | **Just where to move** |
-| **Success rate** | **0%** | **16.6%** |
 
-By letting PyBullet handle the IK, the agent only needs to reason about *where to move the hand* rather than solving inverse kinematics implicitly — a much simpler credit assignment problem.
+By letting PyBullet handle IK, the agent only needs to reason about *where to move the hand* rather than learning inverse kinematics implicitly.
 
 ---
 
 ## Environment Specification
 
-### State Space — 24 dimensions
+### State Space - 24 dimensions
 
-```
+```text
 [joint_angles(7), joint_velocities(7), ee_pos(3), object_pos(3), tray_pos(3), suction_on(1)]
 ```
 
-### Action Space — 4 dimensions
+### Action Space - 4 dimensions
 
-```
+```text
 [dx, dy, dz, suction_action]
 ```
-- `dx, dy, dz ∈ [-0.05, 0.05]` metres — end-effector delta, resolved via IK
-- `suction_action > 0` — attempt to activate suction (only works if within 8 cm of cube)
-- `suction_action ≤ 0` — deactivate suction
+
+- `dx, dy, dz` in `[-0.05, 0.05]` meters
+- `suction_action > 0` attempts to activate suction
+- `suction_action <= 0` deactivates suction
 
 ### Reward Function
 
-```
+```text
 r = -dist(EE, cube) - dist(cube, tray)
     + 10   (one-time: first successful suction grasp)
     + 50   (one-time: cube placed within 5 cm of tray)
 ```
 
-The dense components (`-dist`) guide approach behaviour. The one-time bonuses are anti-gaming: they fire only once per episode so the agent cannot repeatedly collect them.
-
 ### Suction Mechanism
 
-Suction is modelled using a PyBullet `JOINT_FIXED` constraint between the end-effector link and the cube body. It activates only when `dist(EE, cube) < 0.08 m` and a positive suction command is issued.
+Suction is modeled with a PyBullet `JOINT_FIXED` constraint between the end-effector and the cube. It only activates when `dist(EE, cube) < 0.08 m` and a positive suction command is issued.
 
 ---
 
@@ -101,7 +137,7 @@ Suction is modelled using a PyBullet `JOINT_FIXED` constraint between the end-ef
 
 ## Results: 3-Seed Validation
 
-Three independent seeds trained for 1.2M steps each, showing **consistent and reproducible learning**.
+Three independent seeds trained for 1.2M steps each, showing consistent and reproducible learning.
 
 | Metric | Seed 0 | Seed 1 | Seed 2 | **Average** |
 |---|---|---|---|---|
@@ -117,125 +153,114 @@ Three independent seeds trained for 1.2M steps each, showing **consistent and re
 
 All three seeds follow the same four-phase pattern:
 
-1. **Exploration (0–50k steps)** — Random policy, reward ~ -400 to -100
-2. **Discovery (50k–200k steps)** — First successes appear (episodes 58–99), entropy collapses then recovers
-3. **Improvement (200k–600k steps)** — Success rate climbs, episode length drops from 500 to ~30–50 steps
-4. **Stabilisation (600k–1.2M steps)** — Plateau at ~+35–43 eval reward, ~16–17% success rate
-
-### What ~17% Success Rate Means
-
-This is **no human demonstrations, no curriculum, no reward shaping tricks** — just a raw SAC agent with a well-designed action space. For reference:
-- Direct joint control: **0%**
-- SAC + Granger causal reward (Exp5): **72% peak** (required careful tuning)
-- SAC + OT demo buffer (Exp19): **90% at 1M steps** (required pre-loaded buffer)
-
-The suction gripper baseline establishes what plain SAC can achieve given a sensible action space.
+1. **Exploration (0-50k steps)** - random policy, reward about `-400` to `-100`
+2. **Discovery (50k-200k steps)** - first successes appear, entropy collapses then recovers
+3. **Improvement (200k-600k steps)** - success rate climbs, episode length drops sharply
+4. **Stabilization (600k-1.2M steps)** - plateau at about `+35` to `+43` eval reward
 
 ---
 
 ## File Structure
 
-```
+```text
 .
-├── run.sh                          ← automated pipeline (start here)
-├── requirements.txt
-├── pick_place_env_suction.py       ← PyBullet environment
-├── train_suction.py                ← SAC training script
-│
-├── experiments/
-│   ├── exp35_causal_ablation/      ← ablation: 4 methods × 2 tasks × 8 seeds
-│   │   ├── train_ablation.py
-│   │   ├── exp35_mechanistic_analysis.py
-│   │   ├── recover_auto_alpha.py
-│   │   ├── EXPERIMENT_REPORT.md
-│   │   └── analysis/               ← 7 plots + seed_summary.csv
-│   │
-│   └── exp36_alpha_trajectory/     ← alpha bifurcation: 5 tasks × 8 seeds
-│       ├── train_alpha_trajectory.py
-│       └── launch_alpha_trajectory.sh
-│
-└── results/
-    └── suction_gripper/
-        ├── seed0/
-        │   ├── eval/evaluations.npz
-        │   ├── models/best_model/best_model.zip
-        │   └── models/final_model.zip
-        ├── seed1/
-        └── seed2/
+|-- run.sh                         # automated full training pipeline
+|-- test.sh                        # automated best-model evaluation/showcase
+|-- test_trained_model.py          # selects best saved checkpoint and records/plays rollout
+|-- requirements.txt
+|-- pick_place_env_suction.py      # PyBullet suction-gripper environment
+|-- train_suction.py               # SAC training script
+|
+|-- experiments/
+|   |-- exp35_causal_ablation/
+|   |   |-- train_ablation.py
+|   |   |-- exp35_mechanistic_analysis.py
+|   |   |-- recover_auto_alpha.py
+|   |   `-- analysis/
+|   |
+|   `-- exp36_alpha_trajectory/
+|       |-- train_alpha_trajectory.py
+|       `-- launch_alpha_trajectory.sh
+|
+`-- results/
+    |-- suction_gripper/
+    |   |-- seed0/
+    |   |   |-- eval/evaluations.npz
+    |   |   |-- models/best_model/best_model.zip
+    |   |   `-- models/final_model.zip
+    |   |-- seed1/
+    |   `-- seed2/
+    |
+    |-- best_model_anim/
+    `-- test_runs/                 # generated by test.sh when evaluation is run
 ```
 
 ---
 
 ## Additional Experiments: Alpha Bifurcation Analysis
 
-Beyond the main suction gripper results, we ran a mechanistic study on **why SAC succeeds on some seeds and fails on others** — a phenomenon observed across many MetaWorld tasks.
+Beyond the main suction gripper results, the repo also contains a mechanistic study on **why SAC succeeds on some seeds and fails on others**.
 
 ### The Core Finding: Alpha Bifurcation
 
-SAC's auto-tuned entropy coefficient **α** (which controls exploration vs exploitation) behaves very differently depending on whether a seed will eventually succeed:
+SAC's auto-tuned entropy coefficient (`alpha`) behaves very differently depending on whether a seed will eventually succeed:
 
-- **Seeds that solve the task**: α naturally decays toward ~0 as the agent discovers and exploits the solution. SAC's auto-entropy mechanism effectively acts as a self-annealing schedule.
-- **Seeds that fail**: α stays elevated throughout training — the agent keeps exploring because it never finds a stable high-reward region to exploit.
+- **Successful seeds**: `alpha` naturally decays toward zero as the agent discovers and exploits the solution.
+- **Failed seeds**: `alpha` stays elevated, indicating continued exploration without finding a stable high-reward strategy.
 
-This means **α trajectory is a leading indicator of learning success** — you can often predict whether a seed will succeed by watching how α evolves in the first 200–400k steps, well before the evaluation reward diverges.
+This makes `alpha` a useful early indicator of whether a training run is likely to solve the task.
 
-### Exp35 — Causal Ablation Study
+### Exp35 - Causal Ablation Study
 
-**64 runs**: 4 methods × 2 tasks × 8 seeds on MetaWorld (`peg-insert-side-v3`, `pick-place-v3`)
+**64 runs** across 4 methods, 2 tasks, and 8 seeds on MetaWorld.
 
-| Method | Entropy | Demo Reward |
-|---|---|---|
-| **A** — SAC baseline | Auto-tuned | None |
-| **B** — SAC + anneal | Fixed schedule (0.1 → 0.005) | None |
-| **C** — demo_smooth | Auto-tuned | Self-bootstrapped k-NN |
-| **D** — demo_smooth + anneal | Fixed schedule | Self-bootstrapped k-NN |
+### Exp36 - Alpha Trajectory Logging
 
-Key finding: **Method A (plain SAC with auto-entropy) solves 7/8 seeds on peg-insert** — the additional complexity of manual annealing (B) or demo shaping (C, D) does not consistently improve over the baseline. The auto-entropy mechanism in SAC is already doing something close to optimal annealing on seeds that succeed.
-
-Analysis plots are in `experiments/exp35_causal_ablation/analysis/`.
-
-### Exp36 — Alpha Trajectory Logging
-
-**40 runs**: 5 tasks × 8 seeds (Method A only), with α logged every 1,000 steps.
-
-This experiment fixed the logging bug in Exp35 (where auto-α wasn't captured) and produced the full **α-bifurcation figure**: plotting α over training time, coloured by whether the seed ultimately succeeded, shows a clean split at roughly 200–400k steps.
-
-Tasks: `peg-insert-side-v3`, `pick-place-v3`, `door-open-v3`, `drawer-close-v3`, `window-open-v3`
+**40 runs** across 5 tasks and 8 seeds, with `alpha` logged every 1,000 steps.
 
 ---
 
 ## How to Reproduce
 
-### 1. Full pipeline (automated)
+### 1. Full training from scratch inside a bare Ubuntu Docker container
+
 ```bash
 bash run.sh
 ```
 
-### 2. Single training run
+This installs dependencies, verifies the environment, and trains the SAC agent for 3 seeds.
+
+### 2. Run the already trained best model inside a bare Ubuntu Docker container
+
 ```bash
-pip install -r requirements.txt
-python train_suction.py --seed 0 --timesteps 1200000
+bash test.sh
 ```
 
-### 3. Evaluate a saved model
-```bash
-python3 - <<'EOF'
-from stable_baselines3 import SAC
-from pick_place_env_suction import PickPlaceSuctionEnv
+This loads the best saved SAC checkpoint already present in the repo, runs it, and saves outputs under:
 
-env = PickPlaceSuctionEnv()
-model = SAC.load("results/suction_gripper/seed0/models/best_model/best_model.zip")
-obs, _ = env.reset()
-for _ in range(500):
-    action, _ = model.predict(obs, deterministic=True)
-    obs, reward, done, truncated, info = env.step(action)
-    if done or truncated:
-        break
-env.close()
-EOF
+```text
+results/test_runs/
 ```
 
-### 4. TensorBoard
+If no GUI display is available, it records an MP4 there automatically.
+
+### 3. Single training run
+
+```bash
+python3 -m venv venv
+source venv/bin/activate
+python3 -m pip install -r requirements.txt
+python3 train_suction.py --seed 0 --timesteps 1200000
+```
+
+### 4. Programmatic evaluation of a saved model
+
+```bash
+python3 test_trained_model.py --headless
+```
+
+### 5. TensorBoard for a training run
+
 ```bash
 tensorboard --logdir logs/sac_suction_seed0/tb
 ```
@@ -244,10 +269,10 @@ tensorboard --logdir logs/sac_suction_seed0/tb
 
 ## Dependencies
 
-```
+```text
 numpy, gymnasium, pybullet, stable-baselines3
 tensorboard, tqdm, rich
 matplotlib, pandas, scikit-learn, torch
 ```
 
-Full pinned versions in `requirements.txt`.
+Full versions are listed in `requirements.txt`.
